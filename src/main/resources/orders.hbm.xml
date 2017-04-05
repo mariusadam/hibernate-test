@@ -1,0 +1,29 @@
+<!DOCTYPE hibernate-mapping
+PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.test.hibernate">
+	<class name="com.test.hibernate.Order" table="orders">
+		<id name="orderId" column="order_id">
+			<generator class="native" />
+		</id>
+		<property name="orderNbr" column="order_nbr" type="string"
+			length="30" unique="true" not-null="true"/>
+		<property name="orderDesc" column="order_desc" type="string"
+			length="60" not-null="false"/>
+		<property name="orderDate" type="timestamp" column="order_date" not-null="true"/>
+		<property name="orderQty" type="long" not-null="true">
+			<column name="qty" default="1"/> 
+		</property>
+		<property name="totalPrice" type="double" not-null="true" precision="6" scale="2">
+			<column name="total_price" sql-type="decimal(6,3)" check="total_price > 1000" />
+		</property>
+		<!--  
+		<property name="orderPaymentMethod" type="string" length="20">
+			<column name="payment_method" default="&apos;BY_CARD_ON_DELIVERY&apos;"
+				not-null="true" />
+		</property>
+		-->
+		<many-to-one name="orderProduct" column="product"
+					 class="com.test.hibernate.Product" foreign-key="FK_ORDER_PRODUCT" not-null="true"/>
+	</class>
+</hibernate-mapping>

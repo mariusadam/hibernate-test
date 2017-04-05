@@ -1,0 +1,7 @@
+
+target/*
+.idea/*
+.data/*
+hbm2schema.sql
+*.iml
+hibernate.log

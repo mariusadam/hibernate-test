@@ -1,0 +1,14 @@
+<!DOCTYPE hibernate-mapping
+PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.test.hibernate">
+	<class name="com.test.hibernate.Customer" table="customer">
+		<id name="customerId" column="customer_id">
+			<generator class="native" />
+		</id>
+		<property name="customerFirstName" column="first_name" type="string" length="30" unique-key="cust_name" not-null="true"/>
+		<property name="customerLastName" column="last_name" type="string" length="30" unique-key="cust_name" not-null="true"/>
+		<property name="customerMobile" column="mobile_nbr" type="string" length="30" index="mobile" not-null="true"/>
+		<property name="customerEmailId" column="email_id" type="string" length="30" index="mobile" not-null="false"/>						
+	</class>
+</hibernate-mapping>
